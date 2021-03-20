@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+
+repositories {
+    mavenCentral()
+    // Seasar プロジェクトの追加 http://maven.seasar.org/maven2/
+    maven {
+        url "http://maven.seasar.org/maven2"
+    }
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.javassist/javassist
+    implementation group: 'org.javassist', name: 'javassist', version: '3.27.0-GA'
+    // https://mvnrepository.com/artifact/org.apache.geronimo.specs/geronimo-jpa_3.0_spec
+    implementation group: 'org.apache.geronimo.specs', name: 'geronimo-jpa_3.0_spec', version: '1.0'
+    // https://mvnrepository.com/artifact/javax.servlet/jstl
+    implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
+    // https://mvnrepository.com/artifact/log4j/log4j
+    implementation group: 'log4j', name: 'log4j', version: '1.2.17'
+    // https://mvnrepository.com/artifact/jboss/javassist
+    implementation group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
+
+    // DBコネクタ
+    // https://mvnrepository.com/artifact/org.h2/h2
+    implementation group: 'org.h2', name: 'h2', version: '1.0'
+    // https://mvnrepository.com/artifact/mysql/mysql-connector-java
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.49'
+
+    // Seasar2 プロジェクト
+    // https://mvnrepository.com/artifact/org.seasar.container/s2-tiger
+    implementation group: 'org.seasar.container', name: 's2-tiger', version: '2.4.48'
+    // https://mvnrepository.com/artifact/org.seasar.config/s2config-core
+    implementation group: 'org.seasar.config', name: 's2config-core', version: '1.0.3'
+    // https://mvnrepository.com/artifact/org.seasar.config/s2config-extension
+    implementation group: 'org.seasar.config', name: 's2config-extension', version: '1.0.2'
+    // https://mvnrepository.com/artifact/org.seasar.container/s2-framework
+    implementation group: 'org.seasar.container', name: 's2-framework', version: '2.4.48'
+    // https://mvnrepository.com/artifact/org.seasar.container/s2-extension
+    implementation group: 'org.seasar.container', name: 's2-extension', version: '2.4.48'
+    // https://mvnrepository.com/artifact/org.seasar.sastruts/sa-struts
+    implementation group: 'org.seasar.sastruts', name: 'sa-struts', version: '1.0.4-sp7'
+
+    // テスト
+    testImplementation 'junit:junit:4.13'
+}
+
+war {
+    archiveFileName = 'app.war'
+}
