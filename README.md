@@ -79,4 +79,4 @@ docker-compose down && ./graldew clean build -x test && docker-compose up
 
 # 他参考
 
-[【Java】フレームワークSeasar2とは？概要を解説します - ゲーマーときどきエンジニア https://www.tairax.com/entry/study/Java/Seasar2/brief]
+- [【Java】フレームワークSeasar2とは？概要を解説します - ゲーマーときどきエンジニア](https://www.tairax.com/entry/study/Java/Seasar2/brief)
