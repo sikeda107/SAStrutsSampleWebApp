@@ -10,6 +10,11 @@ repositories {
     maven {
         url "http://maven.seasar.org/maven2"
     }
+    // amateras プロジェクトの追加
+    // https://github.com/takezoe/s2jdbc-mock　のため
+    maven {
+        url "http://amateras.sourceforge.jp/mvn"
+    }
 }
 
 dependencies {
@@ -26,7 +31,7 @@ dependencies {
 
     // DBコネクタ
     // https://mvnrepository.com/artifact/org.h2/h2
-    implementation group: 'org.h2', name: 'h2', version: '1.0'
+    testImplementation group: 'org.h2', name: 'h2', version: '1.0'
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java
     implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.49'
 
@@ -48,7 +53,10 @@ dependencies {
     testImplementation 'junit:junit:4.13'
     // https://mvnrepository.com/artifact/org.hamcrest/hamcrest
     testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
-
+    // https://mvnrepository.com/artifact/org.h2/h2
+    testImplementation group: 'org.h2', name: 'h2', version: '1.0'
+    // https://mvnrepository.com/artifact/org.seasar.s2jdbcmock/s2jdbc-mock
+    testImplementation group: 'org.seasar.s2jdbcmock', name: 's2jdbc-mock', version: '1.0.0'
 }
 
 war {
