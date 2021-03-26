@@ -5,7 +5,7 @@
     <component name="context" class="org.seasar.framework.unit.impl.SimpleInternalTestContext"/>
     <component class="org.seasar.framework.unit.impl.ConfigFileIncluderImpl">
         <initMethod name="addConfigFile">
-            <arg>"app.dicon"</arg>
+            <arg>"apptest.dicon"</arg>
         </initMethod>
         <initMethod name="addConfigFile">
             <arg>context.testClassShortName + ".dicon"</arg>

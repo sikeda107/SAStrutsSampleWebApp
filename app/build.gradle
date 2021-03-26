@@ -46,6 +46,9 @@ dependencies {
 
     // テスト
     testImplementation 'junit:junit:4.13'
+    // https://mvnrepository.com/artifact/org.hamcrest/hamcrest
+    testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
+
 }
 
 war {
