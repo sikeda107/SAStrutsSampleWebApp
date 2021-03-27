@@ -4,8 +4,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertNotNull;
+import static org.seasar.s2jdbcmock.S2JdbcUnit.addResult;
 import static org.seasar.s2jdbcmock.S2JdbcUnit.initS2JdbcUnit;
-import static org.seasar.s2jdbcmock.S2JdbcUnit.verifySqlByRegExp;
 
 
 import java.util.ArrayList;
@@ -43,22 +43,6 @@ public class EmpServiceTest {
   }
 
   /**
-   * テーブルを作成.
-   */
-  private void createTable() {
-    // SQL実行
-    jdbcManager.callBySqlFile("CreateTable/createEmp.sql").execute();
-  }
-
-  /**
-   * テーブル削除.
-   */
-  private void dropTable() {
-    // SQL実行
-    jdbcManager.callBySqlFile("DropTable/dropEmp.sql").execute();
-  }
-
-  /**
    * テストデータを作成します.
    *
    * @return Empリスト
@@ -83,37 +67,12 @@ public class EmpServiceTest {
   }
 
   /**
-   * 正常系: 全件取得のテスト.
-   */
-  @Test
-  public void testFindAll() {
-    // テーブル作成
-    createTable();
-
-    // テストデータ投入
-    int[] countArray = jdbcManager.insertBatch(createEmpList()).execute();
-
-    // テスト対象
-    var results = empService.findAll();
-
-    // 検証
-    assertThat(results, hasSize(2));
-    assertThat(results.get(0).empName, is("foo"));
-    assertThat(results.get(1).empName, is("bar"));
-
-    // テーブル削除
-    dropTable();
-  }
-
-  /**
    * 正常系: 表示順で全件取得のテスト.
    */
   @Test
   public void testFindAllOrderById() {
-    // テーブル作成
-    createTable();
-    // テストデータ投入
-    int[] countArray = jdbcManager.insertBatch(createEmpList()).execute();
+    // JdbcManagerの返却値を設定
+    addResult(createEmpList());
 
     // テスト対象
     var results = empService.findAllOrderById();
@@ -122,20 +81,5 @@ public class EmpServiceTest {
     assertThat(results, hasSize(2));
     assertThat(results.get(0).empName, is("foo"));
     assertThat(results.get(1).empName, is("bar"));
-
-    // テーブル削除
-    dropTable();
-  }
-
-  @Test
-  public void testGetEmployeeTx() {
-    // テーブル作成
-    createTable();
-    // サービスのメソッドを実行
-    empService.findAll();
-    // 正規表現でSQLを検証
-    verifySqlByRegExp(0, "SELECT .* FROM EMPLOYEE .* WHERE .*EMP_ID = \\?", 1);
-    // テーブル削除
-    dropTable();
   }
 }
