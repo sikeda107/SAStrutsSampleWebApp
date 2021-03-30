@@ -4,10 +4,18 @@
 <components>
     <include path="junit-jdbc.dicon"/>
     <include path="s2jdbc-internal.dicon"/>
-    <component name="h2JdbcManager" class="org.seasar.extension.jdbc.manager.JdbcManagerImpl">
+    <!--  jdbcManagerをモックする  -->
+    <component name="jdbcManager" class="org.seasar.s2jdbcmock.MockJdbcManager">
         <property name="maxRows">0</property>
         <property name="fetchSize">0</property>
         <property name="queryTimeout">0</property>
         <property name="dialect">h2Dialect</property>
     </component>
+    <!--  h2dbのjdbcManager を設定する  -->
+    <!--    <component name="jdbcManager" class="org.seasar.extension.jdbc.manager.JdbcManagerImpl">-->
+    <!--        <property name="maxRows">0</property>-->
+    <!--        <property name="fetchSize">0</property>-->
+    <!--        <property name="queryTimeout">0</property>-->
+    <!--        <property name="dialect">h2Dialect</property>-->
+    <!--    </component>-->
 </components>

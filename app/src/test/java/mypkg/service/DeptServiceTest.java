@@ -35,6 +35,7 @@ public class DeptServiceTest {
 
   @Before
   public void setUp() throws Exception {
+    var jdbc = jdbcManager;
   }
 
   @After
